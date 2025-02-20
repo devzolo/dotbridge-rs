@@ -1,0 +1,11 @@
+[package]
+name = "dotbridge-sys"
+description = "Raw FFI bindings to .NET CoreCLR hosting APIs (hostfxr, hostpolicy, coreclr)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+libloading = { workspace = true }
+thiserror = { workspace = true }
