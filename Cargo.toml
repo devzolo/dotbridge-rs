@@ -1,0 +1,17 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+rust-version = "1.70"
+
+[workspace.dependencies]
+dotbridge = { path = "crates/dotbridge" }
+dotbridge-sys = { path = "crates/dotbridge-sys" }
+dotbridge-derive = { path = "crates/dotbridge-derive" }
+thiserror = "2"
+libloading = "0.8"
+tokio = { version = "1", features = ["rt", "macros", "sync"] }
