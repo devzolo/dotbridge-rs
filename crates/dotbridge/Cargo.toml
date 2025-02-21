@@ -1,0 +1,16 @@
+[package]
+name = "dotbridge"
+description = "Run .NET code from Rust — seamless Rust/.NET interop"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+dotbridge-sys = { workspace = true }
+dotbridge-derive = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["rt-multi-thread"] }
