@@ -110,7 +110,7 @@ public static class Compiler
 
             // Create a delegate and get its function pointer
             var instance = method.IsStatic ? null : Activator.CreateInstance(type);
-            var invoker = new ManagedInvoker(instance, method);
+            var invoker = new ManagedInvoker(instance, method, alc);
             var handle = GCHandle.Alloc(invoker);
             *resultPtr = (void*)GCHandle.ToIntPtr(handle);
 
@@ -163,11 +163,13 @@ internal class ManagedInvoker
 {
     private readonly object? _instance;
     private readonly MethodInfo _method;
+    private readonly DotBridgeAssemblyLoadContext _alc;
 
-    public ManagedInvoker(object? instance, MethodInfo method)
+    public ManagedInvoker(object? instance, MethodInfo method, DotBridgeAssemblyLoadContext alc)
     {
         _instance = instance;
         _method = method;
+        _alc = alc;
     }
 
     public async Task<object?> InvokeAsync(object? input)
